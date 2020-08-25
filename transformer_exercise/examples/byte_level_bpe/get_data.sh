@@ -19,9 +19,9 @@ if [ ! -f "data/fr-en.tgz" ]; then
   wget https://wit3.fbk.eu/archive/2017-01-trnted/texts/fr/en/fr-en.tgz -P data
   tar xvf data/fr-en.tgz -C data
 fi
-${PY_BIN_ROOT}python get_bitext.py --bpe-vocab 16384 --byte-vocab --char-vocab
+${PY_BIN_ROOT}python get_bitext.py --byte-vocab 
 for VOCAB_SIZE in 2048 4096; do
-  ${PY_BIN_ROOT}python get_bitext.py --bpe-vocab ${VOCAB_SIZE} --bbpe-vocab ${VOCAB_SIZE}
+  ${PY_BIN_ROOT}python get_bitext.py --byte-vocab ${VOCAB_SIZE} 
 done
 rm -r data/fr-en data/fr-en.tgz
 
