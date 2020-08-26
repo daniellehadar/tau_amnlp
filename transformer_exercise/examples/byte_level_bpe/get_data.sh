@@ -20,8 +20,8 @@ if [ ! -f "data/fr-en.tgz" ]; then
   tar xvf data/fr-en.tgz -C data
 fi
 ${PY_BIN_ROOT}python get_bitext.py --byte-vocab 
-for VOCAB_SIZE in 2048 4096; do
-  ${PY_BIN_ROOT}python get_bitext.py --byte-vocab ${VOCAB_SIZE} 
+#for VOCAB_SIZE in 2048 4096; do
+ #${PY_BIN_ROOT}python get_bitext.py --byte-vocab ${VOCAB_SIZE} 
 done
 rm -r data/fr-en data/fr-en.tgz
 
