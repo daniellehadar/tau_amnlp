@@ -22,7 +22,7 @@ fi
 ${PY_BIN_ROOT}python get_bitext.py --byte-vocab 
 #for VOCAB_SIZE in 2048 4096; do
  #${PY_BIN_ROOT}python get_bitext.py --byte-vocab ${VOCAB_SIZE} 
-done
+#done
 rm -r data/fr-en data/fr-en.tgz
 
 # Generate binary dataset
@@ -33,10 +33,10 @@ ${PY_BIN_ROOT}python preprocess.py python --source-lang fr --target-lang en --de
   --testpref data/test.moses.bytes
 
 
-for VOCAB_SIZE in 2048 4096; do
-  for TYPE in bbpe bpe; do
-    ${PY_BIN_ROOT}python preprocess.py --source-lang fr --target-lang en --destdir "data/bin_${TYPE}${VOCAB_SIZE}" \
-      --joined-dictionary --workers "$(nproc)" --trainpref "data/train.moses.${TYPE}${VOCAB_SIZE}" \
-      --validpref "data/valid.moses.${TYPE}${VOCAB_SIZE}" --testpref "data/test.moses.${TYPE}${VOCAB_SIZE}"
-  done
-done
+#for VOCAB_SIZE in 2048 4096; do
+ # for TYPE in bbpe bpe; do
+  #  ${PY_BIN_ROOT}python preprocess.py --source-lang fr --target-lang en --destdir "data/bin_${TYPE}${VOCAB_SIZE}" \
+   #   --joined-dictionary --workers "$(nproc)" --trainpref "data/train.moses.${TYPE}${VOCAB_SIZE}" \
+    #  --validpref "data/valid.moses.${TYPE}${VOCAB_SIZE}" --testpref "data/test.moses.${TYPE}${VOCAB_SIZE}"
+ # done
+#done
