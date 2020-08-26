@@ -28,7 +28,7 @@ rm -r data/fr-en data/fr-en.tgz
 # Generate binary dataset
 
 
-${PY_BIN_ROOT}python preprocess.py python --source-lang fr --target-lang en --destdir data/bin_bytes --joined-dictionary \
+${PY_BIN_ROOT}python preprocess.py --source-lang fr --target-lang en --destdir data/bin_bytes --joined-dictionary \
   --workers "$(nproc)" --trainpref data/train.moses.bytes --validpref data/valid.moses.bytes \
   --testpref data/test.moses.bytes
 
