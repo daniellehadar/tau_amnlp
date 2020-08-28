@@ -29,8 +29,8 @@ rm -r data/fr-en data/fr-en.tgz
 
 
 ${PY_BIN_ROOT}python preprocess.py --source-lang fr --target-lang en --destdir data/bin_bytes --joined-dictionary \
-  --workers "$(nproc)" --trainpref data/train.moses.bytes --validpref data/valid.moses.bytes \
-  --testpref data/test.moses.bytes
+  --workers "$(nproc)" --trainpref data/train.bytes --validpref data/valid.bytes \
+  --testpref data/test.bytes
 
 
 #for VOCAB_SIZE in 2048 4096; do
