@@ -157,8 +157,8 @@ def preprocess_iwslt17(root: str, src: str, tgt: str, bpe_size: Optional[int],
     if need_bytes:
         for lang in [src, tgt]:
             for split in SPLITS:
-                _get_bytes(op.join(root, f'{split}.moses.{lang}'),
-                           op.join(root, f'{split}.moses.bytes.{lang}'))
+                _get_bytes(op.join(root, f'{split}.{lang}'),
+                           op.join(root, f'{split}.bytes.{lang}'))
     # tokenize with characters vocabulary
     if need_chars:
         for lang in [src, tgt]:
