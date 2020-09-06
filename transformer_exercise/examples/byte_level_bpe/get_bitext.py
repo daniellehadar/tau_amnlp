@@ -47,7 +47,8 @@ def _convert_train(in_path: str, out_path: str):
 def _get_bytes(in_path: str, out_path: str):
     with open(in_path) as f, open(out_path, 'w') as f_o:
         for s in f:
-            f_o.write(Bytes.encode(s.strip()) + '\n')
+            f_o.write(s + '\n')
+            //f_o.write(Bytes.encode(s.strip()) + '\n')
 
 
 def _get_chars(in_path: str, out_path: str):
