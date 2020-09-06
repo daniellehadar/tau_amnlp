@@ -130,6 +130,7 @@ def preprocess_iwslt17(root: str, src: str, tgt: str, bpe_size: Optional[int],
             op.join(in_root, f'IWSLT17.TED.tst2015.{src}-{tgt}.{lang}.xml'),
             op.join(root, f'test.{lang}')
         )
+    """
     # pre-tokenize
     for lang in [src, tgt]:
         for split in SPLITS:
@@ -182,7 +183,7 @@ def preprocess_iwslt17(root: str, src: str, tgt: str, bpe_size: Optional[int],
                     op.join(root, f'{split}.moses.{lang}'),
                     op.join(root, f'{split}.moses.bbpe{bbpe_size}.{lang}')
                 )
-
+        """
 
 def main():
     parser = argparse.ArgumentParser()
