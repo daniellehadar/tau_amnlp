@@ -11,4 +11,7 @@ SPACE_NORMALIZER = re.compile(r"\s+")
 def tokenize_line(line):
     line = SPACE_NORMALIZER.sub(" ", line)
     line = line.strip()
+    print("reg line", line)
+    line = line.encode()
+    print("byte line", line)
     return line.split()
