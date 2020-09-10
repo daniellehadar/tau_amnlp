@@ -315,7 +315,7 @@ class Dictionary(object):
                 safe_readline(f)  # drop first incomplete line
             line = f.readline()
             while line:
-                for word in tokenize(line):
+                for word in tokenize(line.strip()):
                     counter.update([word])
                 counter.update([eos_word])
                 if f.tell() > end:
