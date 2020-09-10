@@ -276,13 +276,13 @@ class Dictionary(object):
     def encode_line(
         self,
         line,
-        line_tokenizer=Bytes.encode(line.strip()),
+        line_tokenizer=Bytes.encode(),
         add_if_not_exist=True,
         consumer=None,
         append_eos=True,
         reverse_order=False,
     ):
-        words = line_tokenizer(line)
+        words = line_tokenizer(line.strip())
         if reverse_order:
             words = list(reversed(words))
         nwords = len(words)
