@@ -9,6 +9,7 @@ import torch
 
 from fairseq import metrics, search, tokenizer, utils
 from fairseq.data import data_utils, FairseqDataset, iterators, Dictionary
+from fairseq.data.encoders import Byte
 
 
 class FairseqTask(object):
@@ -64,7 +65,7 @@ class FairseqTask(object):
         d = Dictionary()
         for filename in filenames:
             Dictionary.add_file_to_dictionary(
-                filename, d, tokenizer.tokenize_line, workers
+                filename, d, Byte.encode, workers
             )
         d.finalize(threshold=threshold, nwords=nwords, padding_factor=padding_factor)
         return d
