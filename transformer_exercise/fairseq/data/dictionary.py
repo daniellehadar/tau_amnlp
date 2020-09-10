@@ -324,6 +324,8 @@ class Dictionary(object):
     @staticmethod
     def add_file_to_dictionary(filename, dict, tokenize, num_workers):
         def merge_result(counter):
+            print("w ", w ," c ", c)
+            print("w ", type(w) ," c ", type(c))
             for w, c in sorted(counter.items()):
                 dict.add_symbol(w, c)
 
