@@ -399,6 +399,7 @@ class Trainer(object):
             # (sum_of_gradients / sample_size).
             if not self.args.use_bmuf:
                 multiplier = self.data_parallel_world_size
+                print("sample_size:",sample_size)
                 self.optimizer.multiply_grads(
                     multiplier / sample_size
                 )
