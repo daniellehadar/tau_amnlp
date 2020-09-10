@@ -9,7 +9,7 @@ import torch
 
 from fairseq import metrics, search, tokenizer, utils
 from fairseq.data import data_utils, FairseqDataset, iterators, Dictionary
-from fairseq.data.encoders import Byte
+from fairseq.data.encoders.bytes import Bytes
 
 
 class FairseqTask(object):
