@@ -323,10 +323,10 @@ class Dictionary(object):
 
     @staticmethod
     def add_file_to_dictionary(filename, dict, tokenize, num_workers):
-        def merge_result(counter):
-            print("w ", w ," c ", c)
-            print("w ", type(w) ," c ", type(c))
+        def merge_result(counter):  
             for w, c in sorted(counter.items()):
+                print("w ", w ," c ", c)
+                print("w ", type(w) ," c ", type(c))
                 dict.add_symbol(w, c)
 
         if num_workers > 1:
