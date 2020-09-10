@@ -55,7 +55,7 @@ class Dictionary(object):
 
     def index(self, sym):
         """Returns the index of the specified symbol"""
-        assert isinstance(sym, str)
+        #assert isinstance(sym, str)
         if sym in self.indices:
             return self.indices[sym]
         return self.unk_index
@@ -327,7 +327,7 @@ class Dictionary(object):
             #print(counter.items())
             #for w, c in sorted(counter.items()):
             for w, c in counter.items():
-                print("w ", w ," c ", c)
+                #print("w ", w ," c ", c)
                 #print("w ", type(w) ," c ", type(c))
                 dict.add_symbol(w, c)
 
