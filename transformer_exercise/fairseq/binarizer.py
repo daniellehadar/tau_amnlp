@@ -8,6 +8,7 @@ from collections import Counter
 
 from fairseq.tokenizer import tokenize_line
 import torch
+from fairseq.data.encoders.bytes import Bytes
 
 
 def safe_readline(f):
@@ -26,7 +27,7 @@ class Binarizer:
         filename,
         dict,
         consumer,
-        tokenize=tokenize_line,
+        tokenize=Bytes.encode,
         append_eos=True,
         reverse_order=False,
         offset=0,
