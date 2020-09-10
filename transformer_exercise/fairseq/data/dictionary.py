@@ -276,7 +276,7 @@ class Dictionary(object):
     def encode_line(
         self,
         line,
-        line_tokenizer=Bytes.encode(),
+        line_tokenizer=Bytes.encode,
         add_if_not_exist=True,
         consumer=None,
         append_eos=True,
