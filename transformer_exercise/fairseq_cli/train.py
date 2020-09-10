@@ -167,7 +167,7 @@ def train(args, trainer, task, epoch_itr, max_update=math.inf):
 
     valid_subsets = args.valid_subset.split(',')
     for samples in progress:
-        print samples
+        print (samples)
         with metrics.aggregate('train_inner'):
             log_output = trainer.train_step(samples)
             if log_output is None:  # OOM, overflow, ...
