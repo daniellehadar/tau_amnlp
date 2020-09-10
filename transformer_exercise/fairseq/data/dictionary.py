@@ -12,6 +12,8 @@ from fairseq.binarizer import safe_readline
 from fairseq.data import data_utils
 from fairseq.file_io import PathManager
 from fairseq.tokenizer import tokenize_line
+from fairseq.data.encoders.bytes import Bytes
+
 
 
 class Dictionary(object):
@@ -274,13 +276,13 @@ class Dictionary(object):
     def encode_line(
         self,
         line,
-        line_tokenizer=tokenize_line,
+        line_tokenizer=Bytes.encode(),
         add_if_not_exist=True,
         consumer=None,
         append_eos=True,
         reverse_order=False,
     ):
-        words = line_tokenizer(line)
+        words = line_tokenizer(line.strip())
         if reverse_order:
             words = list(reversed(words))
         nwords = len(words)
