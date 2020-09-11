@@ -123,7 +123,7 @@ def _main(args, output_file):
         #if bpe is not None:
         #   x = bpe.decode(x)
         #if tokenizer is not None:
-            x = Bytes.decode(x)
+        x = Bytes.decode(x)
         return x
 
     # Generate and compute BLEU score
