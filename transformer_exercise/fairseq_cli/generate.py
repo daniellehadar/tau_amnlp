@@ -18,6 +18,8 @@ from fairseq import bleu, checkpoint_utils, options, tasks, utils
 from fairseq.logging import progress_bar
 from fairseq.logging.meters import StopwatchMeter, TimeMeter
 from fairseq.data import encoders
+from fairseq.data.encoders.bytes import Bytes
+
 
 
 def main(args):
@@ -114,14 +116,14 @@ def _main(args, output_file):
     generator = task.build_generator(models, args)
 
     # Handle tokenization and BPE
-    tokenizer = encoders.build_tokenizer(args)
-    bpe = encoders.build_bpe(args)
+    #tokenizer = encoders.build_tokenizer(args)
+    #bpe = encoders.build_bpe(args)
 
     def decode_fn(x):
-        if bpe is not None:
-            x = bpe.decode(x)
-        if tokenizer is not None:
-            x = tokenizer.decode(x)
+        #if bpe is not None:
+        #   x = bpe.decode(x)
+        #if tokenizer is not None:
+            x = Bytes.encode(x.strip())
         return x
 
     # Generate and compute BLEU score
@@ -180,9 +182,9 @@ def _main(args, output_file):
 
             if not args.quiet:
                 if src_dict is not None:
-                    print('S-{}\t{}'.format(sample_id, src_str).encode('latin-1', 'replace'), file=output_file)
+                    print('S-{}\t{}'.format(sample_id, src_str).encode('utf-8', 'replace'), file=output_file)
                 if has_target:
-                    print('T-{}\t{}'.format(sample_id, target_str).encode('latin-1', 'replace'), file=output_file)
+                    print('T-{}\t{}'.format(sample_id, target_str).encode('utf-8', 'replace'), file=output_file)
 
             # Process top predictions
             for j, hypo in enumerate(hypos[i][:args.nbest]):
@@ -201,9 +203,9 @@ def _main(args, output_file):
                 if not args.quiet:
                     score = hypo['score'] / math.log(2)  # convert to base 2
                     # original hypothesis (after tokenization and BPE)
-                    print('H-{}\t{}\t{}'.format(sample_id, score, hypo_str).encode('latin-1', 'replace'), file=output_file)
+                    print('H-{}\t{}\t{}'.format(sample_id, score, hypo_str).encode('utf-8', 'replace'), file=output_file)
                     # detokenized hypothesis
-                    print('D-{}\t{}\t{}'.format(sample_id, score, detok_hypo_str).encode('latin-1', 'replace'), file=output_file)
+                    print('D-{}\t{}\t{}'.format(sample_id, score, detok_hypo_str).encode('utf-8', 'replace'), file=output_file)
                     print('P-{}\t{}'.format(
                         sample_id,
                         ' '.join(map(
@@ -211,16 +213,16 @@ def _main(args, output_file):
                             # convert from base e to base 2
                             hypo['positional_scores'].div_(math.log(2)).tolist(),
                         ))
-                    ).encode('latin-1', 'replace'), file=output_file)
+                    ).encode('utf-8', 'replace'), file=output_file)
 
                     if args.print_alignment:
                         print('A-{}\t{}'.format(
                             sample_id,
                             ' '.join(['{}-{}'.format(src_idx, tgt_idx) for src_idx, tgt_idx in alignment])
-                        ).encode('latin-1', 'replace'), file=output_file)
+                        ).encode('utf-8', 'replace'), file=output_file)
 
                     if args.print_step:
-                        print('I-{}\t{}'.format(sample_id, hypo['steps']).encode('latin-1', 'replace'), file=output_file)
+                        print('I-{}\t{}'.format(sample_id, hypo['steps']).encode('utf-8', 'replace'), file=output_file)
 
                     if getattr(args, 'retain_iter_history', False):
                         for step, h in enumerate(hypo['history']):
@@ -232,7 +234,7 @@ def _main(args, output_file):
                                 tgt_dict=tgt_dict,
                                 remove_bpe=None,
                             )
-                            print('E-{}_{}\t{}'.format(sample_id, step, h_str).encode('latin-1', 'replace'), file=output_file)
+                            print('E-{}_{}\t{}'.format(sample_id, step, h_str).encode('utf-8', 'replace'), file=output_file)
 
                 # Score only the top hypothesis
                 if has_target and j == 0:
