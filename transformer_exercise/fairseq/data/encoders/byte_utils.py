@@ -21,7 +21,8 @@ BCHAR_TO_BYTE = {bc: b for b, bc in BYTE_TO_BCHAR.items()}
 
 def byte_encode(x: str) -> str:
     normalized = WHITESPACE_NORMALIZER.sub(SPACE, x)
-    return ''.join([BYTE_TO_BCHAR[b] for b in normalized.encode('utf-8')])
+    return (normalized.encode('utf-8')).decode('utf-8')
+    #return ''.join([BYTE_TO_BCHAR[b] for b in normalized.encode('utf-8')])
 
 
 def byte_decode(x: str) -> str:
