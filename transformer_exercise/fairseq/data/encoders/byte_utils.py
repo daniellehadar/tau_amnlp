@@ -27,7 +27,8 @@ def byte_encode(x: str) -> str:
 
 def byte_decode(x: str) -> str:
     try:
-        return bytes([BCHAR_TO_BYTE[bc] for bc in x]).decode('utf-8')
+        return bytes(x.encode('utf-8')).decode('utf-8')
+        #return bytes([BCHAR_TO_BYTE[bc] for bc in x]).decode('utf-8')
     except ValueError:
         return ''
 
